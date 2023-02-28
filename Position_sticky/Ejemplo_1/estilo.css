@@ -1,0 +1,148 @@
+/*
+El posicionamiento sticky puede considerarse un híbrido de los posicionamientos relativo y 
+fijo. Un elemento con posicionamiento sticky es tratado como un elemento posicionado 
+relativamente hasta que cruza un umbral especificado, en cuyo punto se trata como fijo 
+hasta que alcanza el límite de su padre.
+*/
+
+.slider {
+    height: 300px;
+    /*
+    Para el elemento div cuya clase es slider establecemos un tamaño de fuente de 4 veces 
+    el tamaño de fuente del elemento raiz
+    */
+    font-size: 4rem; 
+    font-weight: bold; /*Configuramos un peso de la fuente en negrita*/
+    text-align: center; /*Centramos el texto de manera horizontal*/
+    /*
+    El módulo de caja flexible (display: flex) es un modelo de diseño unidimensional que 
+    ofrece distribución de espacio entre elementos en una interfaz y potentes 
+    capacidades de alineación.
+    Un área de un documento diseñado con flexbox se denomina contenedor flexible. 
+    Para crear un contenedor flexible, establecemos el valor de la propiedad display del 
+    contenedor del área en flex o inline-flex. Tan pronto como hagamos esto, los elementos 
+    secundarios directos de ese contenedor se convertirán en elementos flexibles.
+    Para saber un poco más sobre flexbox ver:
+    https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox
+    */
+    display: flex;
+    /*
+    La propiedad justify-content se utiliza para alinear los elementos (secundarios 
+    directos de ese contenedor) en el eje principal (eje en línea que se ejecuta 
+    horizontalmente)
+    */
+    justify-content: center;
+    /*La propiedad align-items alineará los elementos (secundarios directos de ese 
+    contenedor) en el eje transversal (eje de bloque que se ejecuta verticalmente)
+    Para saber más sobre la propiedad justify-content, align-items y los ejes usados en flexbox ver:
+    https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox#justify-content
+    https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox#align-items
+    https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container
+    */
+    align-items: center;
+    background-color: yellow;
+}
+
+/*
+También es necesario considerar que un elemento con posicionamiento sticky es desplazado 
+con relación a su ancestro más cercano o su bloque contenedor. Por ejemplo, si el menú de 
+navegación <nav></nav> se encuentra dentro de un contenedor padre (usaremos de ejemplo 
+la etiqueta <header></header>) este posicionamiento sticky no tendrá ningún efecto a menos 
+que se especifique la altura al elemento padre.
+Se puede observar que el menu va a estar colocado en la parte superior del viewport 
+mientras hagamos scroll y una vez terminemos de recorrer los 200px de altura del header, 
+el menú de navegación deja de estar fijo. Esta es la diferencia con el posicionamiento 
+fixed. Con posicionamiento sticky lo que se está tomando como referencia es el alto del 
+contenedor padre (header), si no declaramos un alto al header no va a funcionar este efecto.
+*/
+/*
+.header {
+    height: 200px;
+    background-color: #ccc;
+}
+*/
+
+.nav {
+    position: sticky;
+    /*
+    En posicionamiento sticky las coordenadas no se usan para mover el elemento (como en 
+    los otros tipos de posicionamiento), si no que se usan para indicar en que punto el 
+    elemento tendrá un comportamiento diferente, antes de llegar a ese punto el elemento 
+    se va a comportar de manera natural.
+    Al usar top: 0px significa que al hacer scroll y cuando el menú de navegación <nav>
+    se encuentre en 0px en la parte superior, este se mantendrá fijo al límite superior de 
+    la ventana del navegador, similar a la posición fixed.
+    */
+    top: 0px;
+    height: 50px; /*Configuramos una altura de 50 px para este elemento nav*/
+    /*
+    Establecemos un área de relleno en los cuatro lados de este elemento (0.5 veces 
+    el tamaño de fuente del elemento padre)
+    */
+    padding: 0.5em;
+    background-color: #ccc;
+}
+
+.nav ul {
+    /*
+    Establecemos el área de margen en la parte superior de este elemento. Un valor positivo 
+    lo ubica más lejos de sus vecinos. En este caso colocamos un valor de 0
+    */    
+    margin-top: 0;
+    /*
+    Establecemos el área de margen en la parte inferior de este elemento. Un valor positivo 
+    lo ubica más lejos de sus vecinos.
+    */
+    margin-bottom: 0;
+    /*
+    Establecemos el ancho del área de relleno a la izquierda de este elemento
+    */
+    padding-left: 0;
+    /*
+    Establecemos el marcador (como un disco, carácter o estilo de contador personalizado) 
+    de un elemento de lista, en este caso al usar none no se va a mostrar ningún marcador
+    para el elemento.
+    */
+    list-style-type: none;
+    display: flex;
+    /*
+    Con space-around generamos la misma cantidad de espacio a la derecha y a la izquierda 
+    de cada elemento (elemento secundario directo de este contendor <ul>)
+    Fuente: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox#justify-content
+    */
+    justify-content: space-around;
+}
+.nav ul li {
+    /*
+    Establecemos una altura de 2 en cada <li> que se ha colocado dentro de la lista desordenada
+    */
+    line-height: 2;
+}
+
+.container {
+    /*Establecemos un ancho del 70% del contenedor (70% del <body>)*/
+    width: 70%;
+    /*
+    Establecemos el ancho máximo de un elemento. Con esto se evita que el valor usado de 
+    la propiedad sea mayor que el valor especificado.
+    */
+    max-width: 600px;
+    /*
+    Establecemos el margen para los cuatro lados de este elemento, en este orden:
+    arriba y abajo | izquierda y derecha
+    En este caso, para abajo y arriba un valor de 0 y auto para izquierda y derecha.
+    */
+    margin: 0 auto;
+}
+
+article {
+    /*
+    Establecemos un área de relleno en los cuatro lados de este elemento (2 veces 
+    el tamaño de fuente del elemento padre)
+    */
+    padding: 2em;
+    /*
+    Establecemos una altura de 1.6 en este elemento article
+    */
+    line-height: 1.6;
+}

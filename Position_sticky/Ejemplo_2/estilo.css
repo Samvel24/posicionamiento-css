@@ -1,0 +1,107 @@
+html {
+    height: 300%;
+}
+.title {
+    text-align: center; /*Centramos el texto del elemento h1*/
+}
+
+.list {
+    /*
+    Para toda la lista de descripción (<dl>) establecemos el área de relleno para los 4 
+    lados en 20px.
+    */
+    padding: 20px; 
+}
+
+.list-group { 
+    /*
+    Para cada contendor cuya clase es list-group establecemos un área de relleno como sigue:
+    arriba y abajo en 0, izquierda y derecha en 20px
+    */
+    padding: 0 20px;
+}
+
+.list-header {
+    /*
+    Para cada elemento dt cuya clase es .list-header establecemos el posicionamiento sticky
+    y los configuramos en top: 0px para que cuando se haga scroll y el dt se encuentre en 
+    0px en la parte superior, este se mantendrá fijo al límite superior de la ventana del 
+    navegador.
+    */
+    position: sticky;
+    top: 0px;
+    /*
+    Establecemos un área de relleno de 10px en los cuatro lados de este elemento
+    */
+    padding: 10px;
+    /*Configuramos un peso de la fuente en 10px*/
+    font-weight: 10px;
+    /*
+    La propiedad background-color establece el color de fondo de un elemento.
+    */
+    background-color: #333;
+    /*
+    La propiedad color CSS establece el valor del color de primer plano del texto y las 
+    decoraciones de texto de un elemento.
+    Ver: https://developer.mozilla.org/en-US/docs/Web/CSS/color
+    */
+    color: #00ff6c; 
+}
+
+dd {
+    /*
+    Con font establecemos todas las diferentes propiedades de la fuente de un elemento
+    Configuramos el peso de la fuente en negrita (bold), el tamaño de la fuente en 12px,
+    line-height en 45px, font-family en Helvetica o Arial (family-name) y finalmente,
+    como parte de font-family, sans-serif (generic-family).
+    Sintaxis formal de font-family: font-family = [ <family-name> | <generic-family> ]#
+    */
+    font: bold 20px/45px Helvetica, Arial, sans-serif;
+    margin: 0;
+    /*
+    Con padding establecemos el área de relleno en los cuatro lados de este elemento en el 
+    siguiente orden: arriba | derecha | abajo | izquierda
+    */
+    padding: 0 0 0 12px;
+    /*
+    La propiedad white-space establece cómo se maneja el espacio en blanco dentro de un 
+    elemento, con un valor de nowrap las secuencias de espacios en blanco colapsarán en un 
+    solo espacio en blanco. El texto nunca pasará a la siguiente línea. El texto continúa 
+    en la misma línea hasta que se encuentra una etiqueta <br>
+    Para saber más sobre white-space ver: 
+    https://www.w3schools.com/cssref/pr_text_white-space.php
+    */
+    white-space: nowrap;
+}
+
+/*
+Usamos el selector de hermanos adyacentes (+) para seleccionar un elemento que está 
+directamente después de otro elemento específico. 
+Los elementos hermanos deben tener el mismo apdre, y "adyacente" significa "inmediatamente 
+después".
+De acuerdo a lo anterior, después de cada primer elemento <dd> se colocarán todas las 
+propiedades del borde superior de un elemento (border-top), en este caso, un ancho
+de linea de 1px, un estilo de linea solid y un color determinado.
+
+Para saber más sobre el selector de hermanos adyacentes ver:
+https://www.w3schools.com/css/css_combinators.asp
+https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_combinator
+*/
+dd + dd {
+    border-top: 1px solid #ccc;
+}
+
+/*
+En resumen para est ejemplo:
+El elemento <dt class="list-header"></dt> se va a quedar fijo en la parte superior 
+siempre que el alto de su contenedor <div class="list-group"></div> tenga contenido.
+
+Así mismo, para resumir el posicionamiento sticky tenemos que:
+1. En este posicionamiento se habilitan las propiedades top, right, bottom y left, pero no 
+se usan para mover el elemento, si no para indicar en que punto el elemento estara fijo.
+2. El elemento es posicionado de acuerdo al flujo normal del documento.
+3. El elemento es desplazado con relación a su ancestro más cercano o su bloque contenedor. 
+Por ejemplo, si un elemento (configurado con posicionamiento sticky) se encuentra dentro de 
+un contenedor padre entonces el elemento no tendrá ningún efecto de posicionamiento a menos 
+que se especifique la altura del padre.
+*/
