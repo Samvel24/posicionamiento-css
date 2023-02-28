@@ -1,0 +1,164 @@
+.container {
+    position: relative;
+    width: 500px; /*Establecemos un ancho de 500px para este elemento*/
+    height: 200px; /*Establecemos un alto de 200px para este elemento*/
+    border: 2px dashed black; /* Establecemos un borde discontinuo (dashed) de 2 px */
+}
+
+/*Seleccionamos los elementos cuya clase comienza con "box", esto es, estamos usando
+un selector de atributo.
+Para saber más sobre Selectores de atritutos ver:
+https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors
+*/
+[class^="box"] {
+    width: 120px; /* Para cada elemento establecemos un ancho de 120 px */
+    height: 50px; /* También establecemos un alto de 50px */
+    font-weight: bold; /*Además, colocamos un peso de fuente de negrita (bold)*/
+    line-height: 1.5; /* Ahora fijamos una altura de 1.5 */
+    text-align: center; /*Y finalmente configuramos la alineación del texto (centrado)*/
+}
+
+.box-1 {
+    position: absolute;
+    background-color: hsl(0deg, 100%, 50%);
+}
+
+.box-2 {
+    position: absolute;
+    /*
+    Movemos este elemento 0 unidades desde la parte superior (de su ancestro posicionado 
+    mas cercano) hacia la inferior.
+    */
+    top: 0; 
+    /*
+    Movemos este elemento 0 unidades desde la parte derecha (de su ancestro posicionado
+    mas cercano) hacia la izquierda
+    */
+    right: 0;
+    background-color: hsl(30deg, 100%, 50%);
+}
+
+.box-3 {
+    position: absolute;
+    /*
+    Movemos este elemento 0 unidades desde la parte inferior (de su ancestro posicionado
+    mas cercano) hacia la superior
+    */
+    bottom: 0;
+    /*
+    Movemos este elemento 0 unidades desde la parte izquierda (de su ancestro posicionado
+    mas cercano) hacia la derecha
+    */
+    left: 0;
+    background-color: hsl(60deg, 80%, 50%);
+}
+
+.box-4 {
+    position: absolute;
+    /*
+    Movemos este elemento 0 unidades desde la parte inferior (de su ancestro posicionado
+    mas cercano) hacia la superior
+    */
+    bottom: 0;
+    /*
+    Movemos este elemento 0 unidades desde la parte derecha (de su ancestro posicionado
+    mas cercano) hacia la izquierda
+    */
+    right: 0;
+    background-color: hsl(120deg, 70%, 50%);
+}
+
+.box-5 {
+    position: absolute;
+    /*
+    Al colocar las 4 propiedades (top, bottom, right, left) en un valor de 0 y además
+    colocar un margen con valor de auto (el navegador seleccionará un valor de margen 
+    adecuado para los 4 lados del elemento) entonces podemos centrar este elemento 
+    en su contenedor (div cuya clase es container).
+    */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: hsl(180, 60%, 50%);
+}
+
+/*
+Agregamos color de fondo al elemento h1 para poder visualizar que es un elemento de bloque
+y por lo tanto, ocupa todo el ancho de la página si no se ha establecido algun tipo
+de posicionamiento.
+*/
+.title {
+    background-color: yellow;
+}
+
+/*
+Para position: absolute, si un elemento no tiene dimensiones declaradas, sus dimensiones 
+se ajustan al contenido.
+Sabemos que un elemento h1 es un elemento de bloque lo que quiere decir que por defecto 
+ocupa todo el ancho de la pagina, pero al agregar la declaración position: absolute ya no 
+ocupara el 100% de la página sino que va a ser lo que ocupe el texto en su interior:
+*/
+.title-2 {
+    position: absolute;
+    background-color: greenyellow;
+}
+
+.container-2 {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border: 2px dashed black;
+}
+
+.box-6 {
+    position: absolute;
+    /*
+    Movemos este elemento en una cantidad del 50% del alto de su contendor desde la parte 
+    superior (de su ancestro posicionado mas cercano) hacia la inferior
+    */
+    top: 50%;
+    /*
+    Movemos este elemento en una cantidad del 50% del ancho de su contendor desde la parte 
+    izquierda (de su ancestro posicionado mas cercano) hacia la derecha
+    */
+    left: 50%;
+    /*
+    Con translate(x, y) reposicionamos este elemento tanto en la coordenda X como en la 
+    cordenada Y. En este caso en una cantidad del -50% (en ambas direcciones) del tamaño de 
+    su contenedor.
+    En conclusión, movemos este elemento un 50% en direcciones positivas y luego 
+    en direcciones negativas con el objetivo de centrarlo al interior de su contenedor.
+    */
+    transform: translate(-50%, -50%);
+    width: 60px; /*Establecemos un ancho de 60px para este elemento*/
+    height: 60px; /*Establecemos un alto de 60px para este elemento*/
+    background-color: greenyellow;
+}
+
+/*
+Sabemos que los elementos en línea no admiten dimensiones (width, height) solo ocupan lo 
+que tengan en su contenido, por lo tanto no podemos cambiar su tamaño a menos que se 
+cambie su comportamiento agregando la declaración display: block o display: inline-block.
+En este ejemplo tenemos un elemento <span></span> que por defecto es un elemento inline, 
+no vamos a colocar la propiedad display solo la declaración position: absolute y solo con 
+esto podemos cambiar el tamaño del elemento.
+*/
+.text {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    padding: 2em;
+    text-align: center;
+    background-color: hsl(30deg, 100%, 50%);
+}
+
+/*
+En resumen, con position: absolute sucede lo siguiente:
+1. El elemento que está posicionado de esta manera pierde su espacio en el flujo normal, 
+todo el espacio que se tuviera considerado para ese elemento desaparece.
+2. Las dimensiones del elemento se adaptan al contenido, excepto si defines width y height.  
+3. Las propiedades top, right, bottom y left se establecen de acuerdo al ancestro más 
+cercano que esté posicionado.
+*/
