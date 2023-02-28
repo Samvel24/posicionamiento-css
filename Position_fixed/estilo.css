@@ -1,0 +1,47 @@
+/*
+Nota: La explicación para este tipo de posicionamiento (fixed) fue realizada por mi 
+mismo pero tomando en cuenta el tutorial de Lupita Code y el tutorial de EDteam de
+este mismo tema.
+*/
+
+.box-1 {
+    position: fixed;
+    font-family: sans-serif; /*Establecemos un nombre de familia generico para esta caja*/
+    font-weight: bold; /*Establecemos un peso de la fuente en negrita*/
+    text-align: center; /*Establecemos la alineación horizontal del texto*/
+    width: 100%; /*Establecemos un ancho del 100% del viewport para este elemento*/
+    height: 100px;
+    /*
+    Con un valor de 0 para top y un valor de fixed para position fijamos este elemento
+    en la parte superior del viewport
+    */
+    top: 0; 
+    background-color: rgba(127, 255, 0, 0.7);
+}
+
+/*
+Con position fixed el elemento box-1 pierde su espacio en el flujo y por tanto el 
+siguiente elemento en el flujo (el contendor de los párrafos) no se colocará debajo de el 
+si no que que estará detrás de box-1, para solucionar esto agregamos la propiedad 
+padding-top o bien margin-top al contenedor de los párrafos.
+La propiedad margin-top establece el área de margen en la parte superior de un 
+elemento. Un valor positivo lo ubica más lejos de sus vecinos.
+En este caso alejamos al contendor de los párrafos en una cantidad de 10 veces el
+tamaño de fuente del padre (10em).
+*/
+.main {
+    margin-top: 10em;
+    background-color: rgb(255, 165, 0, 0.7);
+}
+
+/*
+En resumen, con position: relative sucede lo siguiente:
+1. El elemento es posicionado respecto al viewport.
+2. El elemento no conserva su espacio en el flujo, todo el espacio que se tuviera 
+considerado para ese elemento desaparece.
+3. Los elementos posicionados de forma fija no pueden moverse de su lugar y se colocan 
+encima de otros elementos.
+4. El elemento se queda en el lugar que le has indicado, esto quiere decir que cuando 
+el usuario hace scroll en el sitio web el elemento se queda fijo o "pegado" de ahí 
+el nombre. 
+*/
