@@ -1,0 +1,132 @@
+/* 
+Los elementos comenzaran a pintarse desde la esquina superior izquierda del elemento 
+padre (0 x 0).
+*/
+
+/****************** Ejemplo 1: *********************/
+article { /* Contexto */
+    border: 3px dashed red;
+}
+
+h1 { /* Elemento */
+    position: relative;
+    top: 50px; /* Movemos el elemento h1 en relación a la parte superior (top) (desde arriba hacia abajo) */
+    border-top: 2px solid black;
+    margin: 0;
+    background-color: lightblue;
+}
+
+/************************* Ejemplo 2 a ejemplo 4: *********************************/
+.context {
+    /*
+        Con inline-block el elemento genera un cuadro de elemento de bloque que fluirá con el 
+        contenido circundante como si fuera un único cuadro en línea.
+        Lo anterior se puede entender como sigue: el elemento seleccionado se debe comportar
+        como un elemento en línea (de izquierda a derecha) pero con la diferencia de que
+        se genera un cuadro de elemento que permite establecer un ancho y un alto así como
+        márgenes y rellenos superior e inferior.
+        Para saber más sobre el valor inline-block ver: 
+        https://www.w3schools.com/css/css_inline-block.asp
+        https://developer.mozilla.org/en-US/docs/Web/CSS/display-legacy
+    */
+    display: inline-block; 
+    width: 200px;
+    height: 200px;
+    margin: 5em 1em; /* Establecemos margenes en el siguiente orden:  Arriba(5em) y Derecha (1em)*/
+    border: 2px dashed black; /* Establecemos un borde discontinuo (dashed) de 2 px */
+}
+
+div {
+    /*
+    El relleno (padding) de un elemento es el espacio entre su contenido y su borde.
+    En este caso, establecemos un relleno de 10px
+    */
+    padding: 10px;
+    font-size: 1rem;
+    /*
+    La propiedad CSS line-height establece la altura de un cuadro de línea. Se usa 
+    comúnmente para establecer la distancia entre líneas de texto.
+    Cuando se establecen valores sin unidades, se utiliza este número multiplicado por el 
+    tamaño de fuente del elemento (1rem).
+    Para saber más sobre esta propiedad ver: 
+    https://developer.mozilla.org/en-US/docs/Web/CSS/line-height
+
+    Nota 1: Un cuadro de línea es el área rectangular que contiene las cajas (elementos HTML) 
+    que forman una línea.
+    Ver: https://www.w3.org/TR/2002/WD-css3-linebox-20020515/#LineBox
+    Nota 2: rem significa «el tamaño de letra del elemento raíz>> (<html>).
+    Ver: https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units
+
+    En resumen, se establece una altura de 1.5 rem en cada div que se ha colocado
+    dentro de cada elemento <section>
+    */
+    line-height: 1.5;
+    text-align: center;
+    background-color: rgba(255, 110, 108, 0.7);
+}
+
+.box-1 {
+    position: relative;
+    /* 
+        Movemos el elemento box-1 (un div) en relación a la parte superior (top) (desde
+        arriba hacia abajo).
+        Los porcentajes se basan en el tamaño de su contenedor padre, en este caso en la
+        altura de su contenedor padre.
+        Es conclusión, movemos este elemento en relación a la parte superior del contenedor
+        pero tomando en cuenta su altura, esto es, la altura del padre debe tener un alto
+        declarado para poder mover este elemento en determinado porcentaje. Lo anterior 
+        solo aplica para top y bottom. 
+        En caso de querer usar la propiedad left o right y querer mover el elemento en
+        cierto porcentaje, no es necesario declarar un ancho (width) para el contenedor.
+    */
+    top: 100%;
+}
+
+.box-2 {
+    position: relative;
+    /*
+    Movemos el elemento box-2 en relación a la parte superior (top) (desde
+    arriba hacia abajo) del contenedor, la cantidad en que los movemos es 100px
+    */
+    top: 100px; 
+}
+
+/************************* Ejemplo 5: *********************************/
+.box-11,
+.box-22 {
+    /*
+    Establecemos un ancho (width) y un alto (height) de 100px para cada uno de los div
+    cuya clase es box-11 y box-22.
+    También establecemos la propiedad margin con el valor de auto para que el navegador 
+    selecciona un margen adecuado en cada elemento div.
+    Además, centramos el texto en cada elemento
+    */
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    text-align: center;
+}
+
+.box-11 {
+    position: relative;
+    top: 50px; /* Movemos el elemento div (box-11) en relación a la parte superior (top) (desde arriba hacia abajo)*/
+    left: 50px; /* También movemos este elemento en relación a la parte izquierda (desde la izquierda hacia la derecha) */
+    z-index: 10; /* Por último, movemos este elemento 10 unidades en el eje z, esto hará que la caja 1 se dibuje por encima de la caja 2 */
+    background-color: lightblue;
+}
+
+.box-22 {
+    position: relative;
+    background-color: blueviolet;
+}
+
+/*
+En resumen, con position: relative sucede lo siguiente:
+1. El elemento es posicionado en relación a su posición normal.
+2. Al posicionar el elemento como relativo se habilitan las propiedades top, right, bottom, left y z-index.
+3. Al mover el elemento se conserva su espacio reservado.
+4. El contenido de elementos posicionados de forma relativa pueden moverse y superponerse 
+sobre otros elementos.
+5. Si los valores de top o bottom están en porcentajes, el elemento se va a desplazar solo 
+si el padre tiene un alto declarado de lo contrario no va a pasar nada.
+*/
